@@ -16,6 +16,8 @@ class NavCubit extends Cubit<NavStates>
 
   int navIndex = 0;
 
+  var apiKey = 'bfbab10b77c845a086472ddd37ddebc8'; // <<<--- put API Key here
+
   List<String> titles =
   [
     'Business',
@@ -72,7 +74,6 @@ class NavCubit extends Cubit<NavStates>
   }
 
 
-
   void getBusinessData()
   {
     emit(NavLoadingBusinessState());
@@ -83,7 +84,7 @@ class NavCubit extends Cubit<NavStates>
         {
           'country': 'us',
           'category': 'business',
-          'apiKey': '167fe958677d4b0ba7445b893484ad00',
+          'apiKey': apiKey,
         }
     ).then((value)
     {
@@ -108,7 +109,7 @@ class NavCubit extends Cubit<NavStates>
         {
           'country': 'us',
           'category': 'sports',
-          'apiKey': '167fe958677d4b0ba7445b893484ad00',
+          'apiKey': apiKey,
         }
     ).then((value) {
       sports = value.data['articles'];
@@ -131,7 +132,7 @@ class NavCubit extends Cubit<NavStates>
         {
           'country': 'us',
           'category': 'science',
-          'apiKey': '167fe958677d4b0ba7445b893484ad00',
+          'apiKey': apiKey,
         }
     ).then((value) {
       science = value.data['articles'];
@@ -228,7 +229,7 @@ class NavCubit extends Cubit<NavStates>
         query:
         {
           'q': value,
-          'apiKey': '167fe958677d4b0ba7445b893484ad00',
+          'apiKey': apiKey,
         }
     ).then((value)
     {

@@ -28,19 +28,24 @@ class MainScreen extends StatelessWidget
                     bottom: 5
                 ),
                 child: TextFormField(
+                  autofocus: true,
+                  autocorrect: true,
                   onChanged: (value)
                   {
                     cubit.getSearchData(value);
-                    cubit.business = cubit.search;
-                    cubit.sports = cubit.search;
-                    cubit.science = cubit.search;
+
+                    if(cubit.navIndex == 0) cubit.business = cubit.search;
+
+                    else if(cubit.navIndex == 1 ) cubit.sports = cubit.search;
+
+                    else if(cubit.navIndex == 2) cubit.science = cubit.search;
+
                     cubit.changeWhenTyping();
+
                   },
-                  cursorColor: Colors.red,
-                  style: TextStyle(
-                    color: Colors.red
-                  ),
                   decoration: InputDecoration(
+                    focusColor: Colors.deepOrange,
+
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(40),
                           borderSide: BorderSide(
@@ -58,20 +63,29 @@ class MainScreen extends StatelessWidget
                       label: Text(
                           'Search',
                         style: TextStyle(
-                          color: Colors.grey
                         ),
                       ),
-                      prefixIcon: Icon(Icons.search_rounded,color: Colors.grey,),
+
+                      iconColor: Colors.grey,
+                      hoverColor: Colors.grey,
+                      prefixIconColor: Colors.grey,
+                      fillColor: Colors.grey,
+                      suffixIconColor: Colors.grey,
+
+                      prefixIcon: Icon(Icons.search_rounded,),
                       suffixIcon: IconButton(
                           iconSize: 18,
                           onPressed: ()
                           {
                             cubit.showSearchBar();
-                            cubit.getBusinessData();
-                            cubit.getScienceData();
-                            cubit.getSportsData();
+
+                            if(cubit.navIndex == 0) cubit.getBusinessData();
+
+                            else if(cubit.navIndex == 1 ) cubit.getSportsData();
+
+                            else if(cubit.navIndex == 2) cubit.getScienceData();
                           },
-                          icon: Icon(Icons.arrow_back_ios,color: Colors.grey,)
+                          icon: Icon(Icons.arrow_back_ios)
                       )
                   ),
                 ),

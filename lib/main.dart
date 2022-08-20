@@ -3,7 +3,6 @@ import 'package:api_app/Bloc/states.dart';
 import 'package:api_app/Database/dio_helper.dart';
 import 'package:api_app/Layout/Nav_main.dart';
 import 'package:api_app/shared_preferences/Cache.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -66,6 +65,7 @@ class MyApp extends StatelessWidget
           ),
 
           darkTheme: ThemeData(
+
               textTheme: TextTheme(
                   bodyText1: TextStyle(
                       fontSize: 15,
@@ -73,6 +73,13 @@ class MyApp extends StatelessWidget
                       color: Colors.white.withOpacity(0.6)
                   )
               ),
+
+              colorScheme: ColorScheme.dark(
+                primary: Colors.deepOrange,
+                background: Colors.deepOrange,
+                secondary: Colors.deepOrange
+              ),
+
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: HexColor('1C1C1C'),
                   unselectedItemColor: Colors.white.withOpacity(0.5)
